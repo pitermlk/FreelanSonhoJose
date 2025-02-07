@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Sonhos de José</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      background-color: #1c1c1c;
+      color: #f5f5f5;
+      font-family: 'Cinzel Decorative', serif;
+      scroll-behavior: smooth;
+    }
+
+    html {
+  scroll-behavior: smooth;
+}
+
+
+    .navbar {
+      background-color: #000000;
+      padding: 10px 15px;
+      border-bottom: 2px solid #d4af37;
+    }
+
+    .nav-link, .navbar-brand {
+      color: #d4af37 !important;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .navbar-logo {
+      height: 50px;
+      width: auto;
+    }
+
+    .hero {
+      background: url('imagens/violao.jpg') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      flex-direction: column;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .hero div {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: bold;
+      color: #d4af37;
+    }
+
+    .btn-custom {
+      background-color: #d4af37;
+      color: #000;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 30px;
+      margin-top: 20px;
+    }
+
+    .slogan-image {
+      width: 50%;
+      max-width: 300px;
+      margin: 20px auto;
+      display: block;
+    }
+
+    .floating-audio-bottom {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 10px 0;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .floating-audio-bottom audio {
+      width: 250px;
+      height: 30px;
+      background: transparent;
+      border: none;
+      outline: none;
+    }
+
+    .section {
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .footer {
+      background-color: #000000;
+      color: #d4af37;
+      padding: 15px 0;
+      text-align: center;
+    }
+
+    .bibliografia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.bibliografia img {
+  width: 300px;
+  height: auto;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+}
+
+.bibliografia p {
+  max-width: 600px;
+  text-align: center;
+  font-size: 1.2rem;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+}
+
+.bibliografia.appear img,
+.bibliografia.appear p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+body, html {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      background-color: #1c1c1c;
+      color: #f5f5f5;
+      font-family: 'Cinzel Decorative', serif;
+      scroll-behavior: smooth;
+    }
+
+    .navbar {
+      background-color: #000000;
+      padding: 10px 15px;
+      border-bottom: 2px solid #d4af37;
+    }
+
+    .nav-link, .navbar-brand {
+      color: #d4af37 !important;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .navbar-logo {
+      height: 50px;
+      width: auto;
+    }
+
+    .section {
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .videos {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .video-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .video-container:hover {
+      transform: scale(1.1);
+      box-shadow: 0px 0px 15px rgba(212, 175, 55, 0.8);
+    }
+
+    .video-container iframe {
+      width: 100%;
+      max-width: 400px;
+      height: 225px;
+      border-radius: 15px;
+    }
+
+    .galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  justify-items: center;
+  padding: 20px;
+}
+
+.foto-container {
+  overflow: hidden;
+  border-radius: 15px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.foto-container img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 15px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.foto-container:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 15px rgba(212, 175, 55, 0.8);
+}
+
+.foto-container:hover img {
+  transform: scale(1.2);
+}
+
+.contato-form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+}
+
+.contato-form input,
+.contato-form textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 2px solid #d4af37;
+  border-radius: 8px;
+  background-color: #1c1c1c;
+  color: #f5f5f5;
+  outline: none;
+  transition: 0.3s;
+}
+
+.contato-form input:focus,
+.contato-form textarea:focus {
+  border-color: #ffd700;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.contato-form textarea {
+  height: 120px;
+  resize: none;
+}
+
+.contato-form button {
+  background-color: #d4af37;
+  color: #000;
+  font-weight: bold;
+  padding: 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contato-form button:hover {
+  background-color: #ffd700;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <a class="navbar-brand" href="#home">
+      <img src="imagens/logo-jose.png" alt="Os Sonhos de José" class="navbar-logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#home">Início</a></li>
+        <li class="nav-item"><a class="nav-link" href="#bibliografia">Bibliografia</a></li>
+        <li class="nav-item"><a class="nav-link" href="#videos">Vídeos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#fotos">Fotos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero text-white" id="home">
+    <div class="container center-align">
+      <h1 class="hero-title">Conheça um pouco a minha história</h1>
+      <p class="lead hero-subtitle">Músicas, Evangelismo e momentos inesquecíveis.</p>
+      <a href="#bibliografia" class="btn btn-custom waves-effect waves-light pulse">Conheça mais</a>
+    </div>
+  </header>
+
+  <section id="bibliografia" class="section bibliografia">
+    <h2 class="text-warning">Bibliografia</h2>
+    <img src="imagens/logo-jose.png" alt="Slogan Os Sonhos de José" class="slogan-image animate-logo">
+    <p>"Eu, Robson José, sou hoje um homem transformado pela graça de Deus. Somente a Ele toda honra e toda glória sejam dadas, pois é Ele quem me dá forças para lutar e correr atrás dos meus sonhos, por mais loucos que possam parecer para muitos. Mas foi Ele quem plantou cada sonho em meu coração, e não fico apenas esperando acontecer, eu corro atrás."</p>
+</section>
+
+<section id="videos" class="section">
+  <h2 class="text-warning">Vídeos</h2>
+  <p>Algumas composições...</p>
+  <div class="videos">
+    <div class="video-container" data-aos="fade-up">
+      <iframe src="https://www.youtube.com/embed/ldRV4HP0C-A" allowfullscreen></iframe>
+    </div>
+    <div class="video-container" data-aos="fade-up" data-aos-delay="200">
+      <iframe src="https://www.youtube.com/embed/l48JUXcDueI" allowfullscreen></iframe>
+    </div>
+    <div class="video-container" data-aos="fade-up" data-aos-delay="400">
+      <iframe src="https://www.youtube.com/embed/rLUXdEpMwjg" allowfullscreen></iframe>
+    </div>
+  </div>    
+</section>
+
+<section id="fotos" class="section">
+  <h2 class="text-warning">Fotos</h2>
+  <p>Galeria de imagens do artista...</p>
+  <div class="galeria">
+    <div class="foto-container" data-aos="fade-up">
+      <img src="imagens/1.jpeg" alt="Foto 1">
+    </div>
+    <div class="foto-container" data-aos="fade-up" data-aos-delay="100">
+      <img src="imagens/2.jpeg" alt="Foto 2">
+    </div>
+    <div class="foto-container" data-aos="fade-up" data-aos-delay="200">
+      <img src="imagens/3.jpeg" alt="Foto 3">
+    </div>
+    <div class="foto-container" data-aos="fade-up" data-aos-delay="300">
+      <img src="imagens/4.jpeg" alt="Foto 4">
+    </div>
+    <div class="foto-container" data-aos="fade-up" data-aos-delay="400">
+      <img src="imagens/5.jpeg" alt="Foto 5">
+    </div>
+    <div class="foto-container" data-aos="fade-up" data-aos-delay="500">
+      <img src="imagens/6.jpeg" alt="Foto 6">
+    </div>
+  </div>
+</section>
+
+
+<section id="contato" class="section">
+  <h2 class="text-warning">Contato</h2>
+  <p>Fale conosco</p>
+
+  <div class="contato-form">
+    <input type="text" id="nome" placeholder="Seu Nome" required>
+    <input type="email" id="email" placeholder="Seu Email" required>
+    <textarea id="mensagem" placeholder="Sua Mensagem" required></textarea>
+    <button onclick="enviarWhatsApp()">Enviar</button>
+  </div>
+</section>
+
+
+  <div class="floating-audio-bottom">
+    <audio controls autoplay>
+      <source src="imagens/musica.mpeg" type="audio/mpeg">
+      Seu navegador não suporta o elemento de áudio.
+    </audio>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2025 Artista. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      once: true
+    });
+  </script>
+  <script>
+    document.querySelectorAll('.nav-link, .btn-custom').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+  const bibliografia = document.querySelector(".bibliografia");
+  window.addEventListener("scroll", function() {
+    if (bibliografia.getBoundingClientRect().top < window.innerHeight * 0.75) {
+      bibliografia.classList.add("appear");
+    }
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  // Seleciona todos os links do menu
+  document.querySelectorAll('.nav-link').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const targetId = this.getAttribute('href').substring(1);
+      const targetSection = document.getElementById(targetId);
+
+      if (targetSection) {
+        window.scrollTo({
+          top: targetSection.offsetTop - 70, // Ajusta para não cobrir o título
+          behavior: 'smooth' // Efeito de rolagem suave
+        });
+      }
+    });
+  });
+
+  // Efeito de aparição suave para a bibliografia
+  const bibliografia = document.querySelector(".bibliografia");
+  window.addEventListener("scroll", function() {
+    if (bibliografia.getBoundingClientRect().top < window.innerHeight * 0.75) {
+      bibliografia.classList.add("appear");
+    }
+  });
+});
+
+function enviarWhatsApp() {
+  let nome = document.getElementById("nome").value;
+  let email = document.getElementById("email").value;
+  let mensagem = document.getElementById("mensagem").value;
+  let numeroWhatsApp = "11982990678"; // Substitua pelo número desejado
+
+  if (nome === "" || email === "" || mensagem === "") {
+    alert("Por favor, preencha todos os campos.");
+    return;
+  }
+
+  let texto = `Olá! Meu nome é *${nome}* (%0AEmail: ${email}%0A)%0A%0A${mensagem}`;
+  let url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`;
+  
+  window.open(url, "_blank");
+}
+
+
+
+  </script>
+</body>
+</html>
